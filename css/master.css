@@ -81,8 +81,6 @@
   border-right: 2px solid black;
 }
 
-.choices-box{
-}
 
 .choices{
   list-style: none;
@@ -118,21 +116,26 @@
 
 .choices input:checked + label i{
   background-image: url(../images/circle-filled.png);
-  background-size: 40px;
-  width: 40px;
-  height: 40px;
+}
+
+.choices label i{
+  background-image: url(../images/circle-empty.png);
+  background-size: 20px;
+  width: 20px;
+  height: 20px;
   display: inline-block;
   position: relative;
   top: 1px;
   left: -2px;
-  margin-right: 10px;
-  
+  margin-right: 10px
 }
 
-
-
-
-
+.footer{
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
 
 
 
