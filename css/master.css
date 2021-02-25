@@ -76,7 +76,7 @@
 
 .progress-inner{
   height: 10px;
-  width: 0%;
+  width: 10%;
   background-color: var(--main-theme-color);
   border-right: 2px solid black;
 }
