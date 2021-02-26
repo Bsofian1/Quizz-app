@@ -55,9 +55,13 @@ const listeners= _ =>{
         }
     })
     restartButtonEl.addEventListener("click", function(){
-        
+        quiz.reset()
+        renderAll()
+        nextButtonEl.style.opacity = 100; 
+        setValue(tagLineEl, `Pick an option below!`)
     })
 }
+
 
 
 const setValue = (elem, value) => {

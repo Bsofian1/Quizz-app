@@ -24,3 +24,9 @@ Quiz.prototype.isAnswer= function(userGuess){
     this.increaseIndex();
 
 };
+
+Quiz.prototype.reset= function(){
+    this.score= 0;
+    this.index= 0
+}
+
