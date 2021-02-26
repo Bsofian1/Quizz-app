@@ -45,6 +45,21 @@ const q6= new Question(
     )
 const quiz = new Quiz([q1, q2, q3, q4, q5, q6]);
 
+const listeners= _ =>{
+    nextButtonEl.addEventListener("click", function(){
+        const selectedRadioElem = document.querySelector('input[name="input"]:checked')
+        if(selectedRadioElem){
+           const key = Number(selectedRadioElem.getAttribute("data-order"));
+           quiz.isAnswer(key)
+           renderAll()
+        }
+    })
+    restartButtonEl.addEventListener("click", function(){
+        
+    })
+}
+
+
 const setValue = (elem, value) => {
     elem.innerHTML = value;
 }
@@ -59,7 +74,7 @@ const renderChoicesElem =() => {
     const currentChoices= quiz.getCurrentQuestion().choices;
     currentChoices.forEach((item, index) => {
         markup +=`<li class="choice">
-        <input type="radio" name="input" class="input" id="choice${index}" />
+        <input type="radio" name="input" class="input" data-order="${index}" id="choice${index}" />
         <label for="choice${index}" class="label">
           <i></i>
           ${item}
@@ -93,11 +108,18 @@ const renderProgress= ()=> {
     launch(0, progressIndex)
 }
 
+const renderEndsScreen= _ =>{
+    setValue(quizQuestionEl, `Great job`)
+    setValue(tagLineEl, `Complete!`)
+    setValue(trackerEl, `your score: ${getPercent(quiz.score, quiz.questions.length)}%`)
+    nextButtonEl.style.opacity = 0;
+    renderProgress();
+}
 
 
 const renderAll =_=> {
     if(quiz.hasEnded()){
-    //render endScreen
+    renderEndsScreen()
     }else{
     renderQuestion();
     renderChoicesElem();
@@ -108,8 +130,10 @@ const renderAll =_=> {
 
 return {
     renderAll: renderAll,
+    listeners: listeners,
 }
 
 })();
 
 App.renderAll();
+App.listeners();
